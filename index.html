@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification Experiment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Velkommen-skjerm -->
+    <div  class="welcome-screen">
+        <div class="container">
+            <h1>Velkommen til vår brukertest</h1>
+            <div class="question-div">
+                <h2>Formål og instruksjoner</h2>
+                <p>
+                    Takk for at du deltar i testen vår.<br>
+                    Du skal lese en tekst. Underveis i økten vil du av og til motta varsler på skjermen.
+                    Når du ser et varsel, vennligst responder så raskt som mulig ved å klikke på "OK".
+                    Noen varsler kan ha lyd, mens andre ikke vil ha det. Fortsett med å lese teksten, og
+                    reager på hvert varsel så naturlig som mulig. Det er ingen tidsbegrensning for oppgaven,
+                    men det er fint om du responderer på varslene så raskt som mulig. Fokuser på å lese teksten.
+                    Etter testen er over, vil du få noen spørsmål om hva du leste, og deretter et par spørsmål
+                    om hvordan du opplevde testen.
+                </p>
+            </div>
+            <div class="question-div">
+                <h2>Volumtest</h2>
+                <p>
+                    Vennligst juster datamaskinens volum ved hjelp av testlyden nedenfor.
+                    Klikk på 'Spill av testlyd'-knappen for å sørge for at lyden er tydelig,
+                    men ikke altfor høy.
+                </p>
+                <button onclick="playTestSound()">Spill av testlyd</button>
+                <audio id="test-sound" src="assets/test-sound.wav" preload="auto"></audio>
+            </div>
+            <div class="question-div">
+                <h2>Lydsjekk</h2>
+                <p>
+                    For å bekrefte at du kan høre lyd, hør på lyden nedenfor og skriv hvilket dyr du hørte.
+                </p>
+                <button onclick="playCaptchaSound()">Spill av lyd</button>
+                <audio id="captcha-sound" src=""></audio>
+                <div class="captcha options">
+                    <input type="text" id="sound-captcha-input" placeholder="Hvilket dyr hørte du?" required>
+                    <button onclick="verifyCaptcha()">Sjekk svar</button>
+                </div>
+            </div>
+            <div class="question-div">
+                <h2>Personvern</h2>
+                <p>
+                    For informasjon om hvordan vi håndterer dataene dine, vennligst les våre
+                <a href="assets/GDPR-notifikasjon.pdf" target="_blank">GDPR-vilkår.</a>
+                </p>
+                <div class="gdpr-consent-container">
+                    <input type="checkbox" id="gdpr-consent" required>
+                </div>
+                <div>
+                    <label for="gdpr-consent">Jeg har lest og samtykker til vilkårene i GDPR-erklæringen.</label>
+                </div>
+               <br>
+            </div>
+            <div class="question-div">
+                <h2>Samtykke</h2>
+                <p>
+                    Denne testen vil ta omtrent 10 minutter.
+                    Du kan oppleve at lydvarslene er distraherende.
+                    Du kan stoppe når som helst hvis du føler deg ukomfortabel.
+                </p>
+                <p>
+                    Samtykker du til å delta?
+                </p>
+                <button id="consent-button">Ja</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Metadata Screen -->
+    <div class="metadata-screen" style="display:none;">
+        <form id="participant-form">
+            <div class="form-group">
+                <label for="age">Hvor gammel er du?:</label>
+                <input type="number" id="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Hva er ditt kjønn?:</label>
+                <select id="gender" required>
+                    <option value="Mann">Mann</option>
+                    <option value="Kvinne">Kvinne</option>
+                    <option value="Ikke-binær">Ikke-binær</option>
+                    <option value="Foretrekker-å-ikke-svare">Foretrekker å ikke svare</option>
+                    <option value="Annet">Annet</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="device-type">Hva slags enhet bruker du akkurat nå?:</label>
+                <select id="device-type" required>
+                    <option value="Mobiltelefon">Mobiltelefon</option>
+                    <option value="Stasjonær-data">Stasjonær datamaskin</option>
+                    <option value="Bærbar-data">Bærbar datamaskin</option>
+                    <option value="Annet">Annet</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="audio-output">Bruker du hodetelefoner eller høytalere?:</label>
+                <select id="audio-output" required>
+                    <option value="Hodetelefoner">Hodetelefoner</option>
+                    <option value="Høytalere">Høytaler</option>
+                    <option value="Annet">Annet</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="input-device">Bruker du datamus eller touchpad?:</label>
+                <select id="input-device" required>
+                    <option value="Mus">Mus</option>
+                    <option value="Touchpad">Touchpad</option>
+                    <option value="Annet">Annet</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hearing-impairment">Har du noen kjente hørselshemminger som kan påvirke din respons på lydvarsler?:</label>
+                <select id="hearing-impairment" required>
+                    <option value="Nei">Nei</option>
+                    <option value="Ja">Ja</option>
+                    <option value="Foretrekker å ikke svare">Foretrekker å ikke svare</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="computer-familiarity">Hvor kjent er du med å bruke en datamaskin/mobiltelefon til daglige oppgaver?:</label>
+                <select id="computer-familiarity" required>
+                    <option value="Ikke-i-det-hele-tatt">Ikke i det hele tatt</option>
+                    <option value="Ikke-særlig">Ikke-særlig</option>
+                    <option value="Noe">Noe</option>
+                    <option value="Veldig">Veldig</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="previous-study">Har du noen gang deltatt i en test som involverer å svare på varsler eller lydsignaler?:</label>
+                <select id="previous-study" required>
+                    <option value="Nei">Nei</option>
+                    <option value="Ja">Ja</option>
+                </select>
+            </div>
+
+            <button type="submit">Start testen</button>
+        </form>
+    </div>
+
+    <!-- Selve test-skjermen -->
+    <div class="experiment-screen" style="display:none;">
+        <h1>Les teksten nedenfor</h1>
+        <div class="text-content" id="history-of-chocolate">
+            <!-- Her kommer kapitellet som skal leses -->
+        </div>
+    </div>
+
+    <<!-- Post-Test Screen -->
+    <div class="post-test-screen" style="display:none;">
+        <h1>Svar på spørsmålene nedenfor</h1>
+        <form id="question-form">
+            <!-- Question 1 -->
+            <div class="question-div">
+                <p>Hva antas opprinnelig å være stedet der kakaotreet vokste vilt?</p>
+                <div class="options">
+                    <label class="option-item">
+                        <input type="radio" name="question1" value="A" required> A) Andesfjellene
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="question1" value="B"> B) Amazonas og Orinoco-jungelen
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="question1" value="C"> C) Stillehavet
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-div">
+                <p>Hvilket folk er kjent for å ha oppdaget kakao i Mellom-Amerika?</p>
+                <div class="options">
+                    <label class="option-item">
+                        <input type="radio" name="question2" value="A" required> A) Aztekerne
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="question2" value="B"> B) Inkaene
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="question2" value="C"> C) Mayafolket
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-div">
+                <p>Hva kalte Mayafolket sin drikk laget av kakao?</p>
+                <div class="options">
+                    <label class="option-item">
+                        <input type="radio" name="question3" value="A" required> A) Chocolatl
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="question3" value="B"> B) Chocolat
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="question3" value="C"> C) Chocoloci
+                    </label>
+                </div>
+            </div>
+
+            <!-- New Question: Engagement -->
+            <div class="question-div">
+                <p>Hvor engasjert var du i lesematerialet?</p>
+                <div class="options">
+                    <label class="option-item">
+                        <input type="radio" name="engagement" value="Very engaged" required> Veldig engasjert
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="engagement" value="Somewhat engaged"> Noe engasjert
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="engagement" value="Neutral"> Nøytral
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="engagement" value="Not very engaged"> Lite engasjert
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="engagement" value="Not engaged at all"> Ikke engasjert i det hele tatt
+                    </label>
+                </div>
+            </div>
+
+            <!-- New Question: Difficulty -->
+            <div class="question-div">
+                <p>Hvor vanskelig syntes du oppgaven var totalt sett?</p>
+                <div class="options">
+                    <label class="option-item">
+                        <input type="radio" name="difficulty" value="Very easy" required> Veldig lett
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="difficulty" value="Easy"> Lett
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="difficulty" value="Neutral"> Nøytral
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="difficulty" value="Difficult"> Vanskelig
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="difficulty" value="Very difficult"> Veldig vanskelig
+                    </label>
+                </div>
+            </div>
+
+            <!-- New Question: Distraction -->
+            <div class="question-div">
+                <p>Fant du lydvarslene spesielt distraherende?</p>
+                <div class="options">
+                    <label class="option-item">
+                        <input type="radio" name="distraction" value="Yes" required> Ja
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="distraction" value="No"> Nei
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="distraction" value="Neutral"> Nøytral
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit">Send inn svar</button>
+        </form>
+    </div>
+
+    <!-- END SCREEN -->
+    <div class="end-screen" style="display:none;">
+        <div class="end-container">
+            <h1>Testen er over</h1>
+            <p>Takk for din deltakelse</p>
+        </div>
+    </div>
+
+
+    <script src="experiment.js"></script>
+</body>
+</html>

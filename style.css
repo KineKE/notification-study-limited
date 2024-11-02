@@ -1,0 +1,527 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Soft light grey background for a neutral look */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    color: #333; /* Dark grey text for readability */
+}
+
+/* Main Container */
+.container {
+    background-color: #ffffff; /* White background for content */
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 900px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Header */
+h1 {
+    color: #0056b3; /* Deep blue for main header */
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Section Styles */
+.question-div {
+    background-color: #f1f1f1; /* Light grey background for question sections */
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 5px solid #0056b3; /* Blue accent border for sections */
+}
+
+h2 {
+    font-size: 20px;
+    color: #0056b3; /* Matching blue for section headers */
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555; /* Medium grey for text */
+    margin-bottom: 10px;
+}
+
+/* General Styles for the Button */
+button {
+    background-color: #007BFF; /* Bright blue color */
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Increased padding for better appearance */
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Add space above the button */
+    margin-bottom: 10px; /* Add space below the button */
+    display: block; /* Make the button a block element to center it */
+    width: 100%; /* Make the button take full width for a cleaner look */
+    max-width: 200px; /* Limit the maximum width for a balanced appearance */
+    margin-left: auto; /* Center the button horizontally */
+    margin-right: auto; /* Center the button horizontally */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+audio {
+    display: block;
+    margin: 10px 0;
+}
+
+/* Links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form Elements */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* Styling for GDPR Consent Section */
+label {
+    font-size: 14px;
+    color: #555;
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Align items vertically in the center */
+    gap: 0px; /* Space between the checkbox and the label text */
+    margin-top: 10px; /* Space above the label */
+}
+
+/* Styles for the checkbox */
+input[type="checkbox"] {
+    margin: 0; /* Remove default margins */
+    transform: translateY(2px); /* Fine-tune the checkbox position */
+}
+
+input, select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Screen Styles */
+.welcome-screen, .metadata-screen, .experiment-screen, .end-screen {
+    display: none;
+}
+
+.welcome-screen {
+    display: block; /* Show the welcome screen by default */
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p, label {
+        font-size: 14px;
+    }
+}
+
+
+/* Styling for the GDPR Consent Section */
+.gdpr-consent-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the checkbox horizontally */
+    gap: 10px; /* Space between the checkbox and the label */
+    margin-top: 15px; /* Space above the container */
+}
+
+.gdpr-consent-container input[type="checkbox"] {
+    width: 18px; /* Set width for the checkbox */
+    height: 18px; /* Set height for the checkbox */
+    accent-color: #0056b3; /* Modern browsers use this color for the checkbox */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+label[for="gdpr-consent"] {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer; /* Allow clicking on the label to toggle the checkbox */
+    line-height: 1.2; /* Adjust line height to keep text closer together */
+    margin: 0; /* Remove default margin */
+    text-align: left; /* Align text to the left */
+}
+
+/* Styles for the checkbox */
+input[type="checkbox"] {
+    margin: 0; /* Remove all margins */
+    vertical-align: middle; /* Ensure checkbox is aligned with the text */
+}
+
+/* Styles for the label */
+label {
+    font-size: 14px;
+    color: #555;
+    margin: 0; /* Remove default margins */
+    line-height: 1; /* Reduce line height to keep text close */
+}
+
+/* Enhancing form container */
+.metadata-screen {
+    max-width: 700px; /* Adjusted max width for a compact look */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px;
+    background-color: #ffffff; /* White background for form */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Styling labels and inputs for better alignment */
+form label {
+    font-weight: bold; /* Make labels stand out */
+    color: #333; /* Consistent text color */
+    margin-bottom: 5px; /* Space below labels */
+    display: block; /* Labels span full width */
+}
+
+form input, form select {
+    border: 1px solid #ddd; /* Light border for inputs */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Consistent padding */
+    font-size: 14px; /* Adjust font size */
+    margin-bottom: 15px; /* Space between elements */
+    box-sizing: border-box; /* Box sizing for consistent layout */
+    transition: border-color 0.2s; /* Smooth border color transition */
+}
+
+form input:focus, form select:focus {
+    border-color: #0056b3; /* Highlighted border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Improving button style */
+button[type="submit"] {
+    background-color: #0056b3; /* Deep blue for submit button */
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Balanced padding for button */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px; /* Font size for readability */
+    width: 100%; /* Full width button */
+    max-width: 200px; /* Limit max width for balanced look */
+    margin: 0 auto; /* Center the button */
+    display: block; /* Block display for centering */
+}
+
+button[type="submit"]:hover {
+    background-color: #003d7a; /* Darker blue on hover */
+}
+
+/* Adjusting spacing for a more balanced layout */
+input[type="number"] {
+    -moz-appearance: textfield; /* Remove spinner arrows in Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove spinner arrows in WebKit browsers */
+    margin: 0; /* Remove default margin */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .metadata-screen {
+        padding: 15px;
+    }
+    form input, form select {
+        font-size: 13px; /* Slightly smaller font size */
+        padding: 7px 10px; /* Adjusted padding */
+    }
+    button[type="submit"] {
+        font-size: 14px; /* Smaller button font */
+    }
+}
+
+/* Experiment Screen Styling */
+.experiment-screen {
+    display: none; /* Hidden by default */
+    background-color: #f8f9fa; /* Light grey background for readability */
+    padding: 40px; /* Add padding for breathing space */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 900px; /* Limit the width for better readability */
+    margin: 20px auto; /* Center the content */
+    text-align: left; /* Align text to the left for easier reading */
+    color: #333; /* Dark grey text for readability */
+    font-family: 'Arial', sans-serif; /* Consistent font with the rest of the site */
+}
+
+/* Heading Styles */
+.experiment-screen h1 {
+    font-size: 26px;
+    color: #0056b3; /* Deep blue color for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: center; /* Center the heading */
+}
+
+/* Text Content Styling */
+.text-content {
+    font-size: 16px;
+    line-height: 1.8; /* Increase line height for better readability */
+    color: #555; /* Medium grey text for less eye strain */
+    max-width: 800px; /* Limit the width of the text content */
+    margin: 0 auto; /* Center the text content */
+    padding: 20px; /* Add padding inside the text container */
+    background-color: #ffffff; /* White background for text */
+    border-radius: 5px; /* Rounded corners for a softer look */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .experiment-screen {
+        padding: 20px; /* Reduce padding on smaller screens */
+    }
+
+    .text-content {
+        font-size: 14px; /* Slightly smaller text on small screens */
+    }
+}
+
+/* Question Screen Styling */
+.question-screen {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+/* Post-Test Screen Styling */
+.post-test-screen {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.post-test-screen h1 {
+    font-size: 26px;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Question Container Styling */
+.question-container {
+    margin-bottom: 20px;
+}
+
+.question-container p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.options label {
+    font-size: 14px;
+    color: #555;
+    display: block; /* Each option on a new line */
+    margin-bottom: 8px;
+}
+
+input[type="radio"] {
+    margin-right: 10px; /* Space between radio button and label */
+    transform: scale(1.2); /* Slightly increase the size of radio buttons */
+}
+
+/* Button Styling */
+button[type="submit"] {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 30px auto 0; /* Center button and add space above */
+    max-width: 200px;
+}
+
+button[type="submit"]:hover {
+    background-color: #003d7a;
+}
+
+/* End Screen Styling */
+.end-screen {
+    background-color: #f8f9fa; /* Light grey background for a clean look */
+    border-radius: 8px;
+    padding: 40px; /* Padding to give the content space */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 800px; /* Limit the width of the content */
+    margin: 40px auto; /* Center the content and add space above */
+    text-align: center; /* Center align text */
+    color: #333; /* Dark grey text for readability */
+    font-family: 'Arial', sans-serif; /* Consistent font with the rest of the site */
+}
+
+.end-container {
+    display: flex;
+}
+
+.end-container h1 {
+    font-size: 26px;
+    color: #0056b3; /* Deep blue color for the main heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.end-container p {
+    font-size: 16px;
+    color: #555; /* Medium grey for the paragraph */
+    margin: 0; /* Remove default margin */
+    line-height: 1.5; /* Adjust line height for readability */
+}
+
+/* Styles for each question div */
+.question-div {
+    background-color: #f1f1f1; /* Light grey background */
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 5px solid #0056b3; /* Blue accent border */
+}
+
+/* Styles for the options container */
+.options {
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    gap: 8px; /* Space between each option */
+}
+
+/* Styles for each option item */
+.option-item {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+}
+
+label {
+    margin-left: 8px; /* Space between radio button and label text */
+}
+
+input[type="radio"] {
+    transform: scale(1.2); /* Increase the size of radio buttons */
+}
+
+
+/* Styles for each question div */
+.question-div {
+    background-color: #f1f1f1; /* Light grey background */
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 5px solid #0056b3; /* Blue accent border */
+}
+
+/* Styles for the options container */
+.options {
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    gap: 8px; /* Space between each option */
+}
+
+/* Styles for each option item */
+.option-item {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    font-size: 16px; /* Consistent font size */
+    color: #555; /* Medium grey for text */
+}
+
+label {
+    cursor: pointer; /* Pointer cursor for labels */
+}
+
+input[type="radio"] {
+    margin-right: 10px; /* Space between radio button and label text */
+    transform: scale(1.2); /* Increase the size of radio buttons */
+}
+
+
+/* Styling for the end screen */
+.end-screen {
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 30px; /* Padding for the container */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 600px; /* Limit the width of the container */
+    margin: 40px auto; /* Center the container and add space above */
+    text-align: center; /* Center align text within the container */
+    color: #333; /* Dark grey text for readability */
+    font-family: 'Arial', sans-serif; /* Consistent font */
+}
+
+/* Styling for the main title */
+.end-title {
+    font-size: 28px; /* Larger font size for the title */
+    color: #0056b3; /* Deep blue color */
+    margin: 0; /* Remove default margin */
+}
+
+/* Styling for the subtext */
+.end-subtext {
+    font-size: 16px; /* Smaller font size for subtext */
+    color: #555; /* Medium grey color */
+    margin-top: 10px; /* Space between the title and subtext */
+}
