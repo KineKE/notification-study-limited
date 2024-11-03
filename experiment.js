@@ -122,7 +122,7 @@ document.getElementById("participant-form").addEventListener("submit", function(
     loadTextContent();
 
     // Start the countdown timer (e.g., for 10 minutes)
-    const readingDuration = 10 * 60; // 10 minutes in seconds
+    const readingDuration = 8 * 60; // 8 minutes in seconds
     startCountdown(readingDuration);
 
     setTimeout(() => {
