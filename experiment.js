@@ -62,6 +62,11 @@ function startCountdown(duration) {
         // Decrement the timer
         timer--;
 
+        // Check if the timer has reached zero
+        if (timer < 0) {
+            clearInterval(interval); // Stop the countdown
+        }
+
     }, 1000); // Update every second
 }
 
