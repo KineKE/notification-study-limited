@@ -3,6 +3,7 @@ let captchaPassed = false;
 let attempts = 0;
 const maxAttempts = 3;
 let participantData = {}; // Declare globally
+let responseTimes = [];
 
 // Funksjon for å spille av testlyden
 function playTestSound() {
@@ -131,7 +132,7 @@ function startNotifications(participantData) {
             setTimeout(() => {
                 alert("Klikk OK for å lukke notifikasjonen.");
                 const responseTime = Date.now() - notificationStart;
-                participantData.responseTimes.push({ withSound, responseTime });
+                responseTimes.push({ withSound, responseTime });
             }, 50); // Delay by 50 milliseconds to sync better with the sound
 
             if (notificationCount >= maxNotifications) {
