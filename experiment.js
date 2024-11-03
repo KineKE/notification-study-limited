@@ -216,6 +216,7 @@ function startNotifications(participantData) {
             if (notificationCount >= maxNotifications) {
                 showPostTestScreen();
                 return;
+            }
 
         } else {
             alert("Klikk OK for å lukke notifikasjonen.");
@@ -225,6 +226,7 @@ function startNotifications(participantData) {
             if (notificationCount >= maxNotifications) {
                 showPostTestScreen();
                 return;
+            }
         }
         // Schedule the next notification
         if (notificationCount < maxNotifications) {
