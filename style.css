@@ -609,9 +609,17 @@ button[type="submit"]:hover {
     background-color: #004c99; /* Slightly darker blue on hover */
 }
 
+
 .countdown-timer {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #333;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    font-size: 2em;          /* Increase font size */
+    font-weight: bold;       /* Make the text bold */
+    color: #ff4500;          /* Use a striking color like orange-red */
+    margin-bottom: 20px;     /* Add some space below the timer */
+    background-color: #f0f0f0; /* Add a subtle background for contrast */
+    padding: 10px 20px;      /* Add padding for better readability */
+    border-radius: 10px;     /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
