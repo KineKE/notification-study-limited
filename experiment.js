@@ -46,6 +46,18 @@ function verifyCaptcha() {
     }
 }
 
+// Countdown timer logic
+function startCountdown(duration) {
+    let timer = duration;
+    const countdownElement = document.getElementById("countdown");
+
+    const interval = setInterval(() => {
+        const minutes = Math.floor(timer / 60);
+        const seconds = timer % 60;
+        countdownElement.textContent = `${minutes}m ${seconds}s`;
+    }, 1000);
+}
+
 // Funksjon for å laste tekstinnhold
 function loadTextContent() {
     fetch('assets/sjokoladens-historie.html')
@@ -96,6 +108,10 @@ document.getElementById("participant-form").addEventListener("submit", function(
     document.querySelector(".metadata-screen").style.display = "none";
     document.querySelector(".experiment-screen").style.display = "block";
     loadTextContent();
+
+    // Start the countdown timer (e.g., for 10 minutes)
+    const readingDuration = 10 * 60; // 10 minutes in seconds
+    startCountdown(readingDuration);
 
     setTimeout(() => {
         startNotifications(participantData);
@@ -173,9 +189,9 @@ function startNotifications(participantData) {
     notificationTypes.sort(() => Math.random() - 0.5);
 
     // Calculations
-    const totalDuration = 8 * 60 * 1000; // 10 minutes
+    const totalDuration = 8 * 60 * 1000; // 8 minutes
     const minInterval = 5 * 1000; // 5 seconds
-    const maxInterval = 45 * 1000 // 45 seconds
+    const maxInterval = 30 * 1000 // 30 seconds
 
     // Generate random intervals that sum up to the total duration
     const intervals = [];

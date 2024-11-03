@@ -161,123 +161,88 @@
         <div class="text-content" id="history-of-chocolate">
             <!-- Her kommer kapitellet som skal leses -->
         </div>
+        <div class="countdown-timer">
+            <p>Gjenstående tid: <span id="countdown"></span></p>
+        </div>
     </div>
 
-    <<!-- Post-Test Screen -->
-    <div class="post-test-screen" style="display:none;">
-        <h1>Svar på spørsmålene nedenfor</h1>
-        <form id="question-form">
-            <!-- Question 1 -->
-            <div class="question-div">
-                <p>Hva antas opprinnelig å være stedet der kakaotreet vokste vilt?</p>
-                <div class="options">
-                    <label class="option-item">
-                        <input type="radio" name="question1" value="A" required> A) Andesfjellene
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="question1" value="B"> B) Amazonas og Orinoco-jungelen
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="question1" value="C"> C) Stillehavet
-                    </label>
-                </div>
-            </div>
+    <!-- Post-Test Screen -->
+<div class="post-test-screen" style="display:none;">
+    <h1>Svar på spørsmålene nedenfor</h1>
+    <form id="question-form">
+        <!-- Question 1 -->
+        <div class="question-div">
+            <p>Hva antas opprinnelig å være stedet der kakaotreet vokste vilt?</p>
+            <select name="question1" required>
+                <option value="" disabled selected>Velg et alternativ</option>
+                <option value="A">A) Andesfjellene</option>
+                <option value="B">B) Amazonas og Orinoco-jungelen</option>
+                <option value="C">C) Stillehavet</option>
+            </select>
+        </div>
 
-            <!-- Question 2 -->
-            <div class="question-div">
-                <p>Hvilket folk er kjent for å ha oppdaget kakao i Mellom-Amerika?</p>
-                <div class="options">
-                    <label class="option-item">
-                        <input type="radio" name="question2" value="A" required> A) Aztekerne
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="question2" value="B"> B) Inkaene
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="question2" value="C"> C) Mayafolket
-                    </label>
-                </div>
-            </div>
+        <!-- Question 2 -->
+        <div class="question-div">
+            <p>Hvilket folk er kjent for å ha oppdaget kakao i Mellom-Amerika?</p>
+            <select name="question2" required>
+                <option value="" disabled selected>Velg et alternativ</option>
+                <option value="A">A) Aztekerne</option>
+                <option value="B">B) Inkaene</option>
+                <option value="C">C) Mayafolket</option>
+            </select>
+        </div>
 
-            <!-- Question 3 -->
-            <div class="question-div">
-                <p>Hva kalte Mayafolket sin drikk laget av kakao?</p>
-                <div class="options">
-                    <label class="option-item">
-                        <input type="radio" name="question3" value="A" required> A) Chocolatl
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="question3" value="B"> B) Chocolat
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="question3" value="C"> C) Chocoloci
-                    </label>
-                </div>
-            </div>
+        <!-- Question 3 -->
+        <div class="question-div">
+            <p>Hva kalte Mayafolket sin drikk laget av kakao?</p>
+            <select name="question3" required>
+                <option value="" disabled selected>Velg et alternativ</option>
+                <option value="A">A) Chocolatl</option>
+                <option value="B">B) Chocolat</option>
+                <option value="C">C) Chocoloci</option>
+            </select>
+        </div>
 
-            <!-- New Question: Engagement -->
-            <div class="question-div">
-                <p>Hvor engasjert var du i lesematerialet?</p>
-                <div class="options">
-                    <label class="option-item">
-                        <input type="radio" name="engagement" value="Very engaged" required> Veldig engasjert
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="engagement" value="Somewhat engaged"> Noe engasjert
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="engagement" value="Neutral"> Nøytral
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="engagement" value="Not very engaged"> Lite engasjert
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="engagement" value="Not engaged at all"> Ikke engasjert i det hele tatt
-                    </label>
-                </div>
-            </div>
+        <!-- New Question: Engagement -->
+        <div class="question-div">
+            <p>Hvor engasjert var du i lesematerialet?</p>
+            <select name="engagement" required>
+                <option value="" disabled selected>Velg et alternativ</option>
+                <option value="Very engaged">Veldig engasjert</option>
+                <option value="Somewhat engaged">Noe engasjert</option>
+                <option value="Neutral">Nøytral</option>
+                <option value="Not very engaged">Lite engasjert</option>
+                <option value="Not engaged at all">Ikke engasjert i det hele tatt</option>
+            </select>
+        </div>
 
-            <!-- New Question: Difficulty -->
-            <div class="question-div">
-                <p>Hvor vanskelig syntes du oppgaven var totalt sett?</p>
-                <div class="options">
-                    <label class="option-item">
-                        <input type="radio" name="difficulty" value="Very easy" required> Veldig lett
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="difficulty" value="Easy"> Lett
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="difficulty" value="Neutral"> Nøytral
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="difficulty" value="Difficult"> Vanskelig
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="difficulty" value="Very difficult"> Veldig vanskelig
-                    </label>
-                </div>
-            </div>
+        <!-- New Question: Difficulty -->
+        <div class="question-div">
+            <p>Hvor vanskelig syntes du oppgaven var totalt sett?</p>
+            <select name="difficulty" required>
+                <option value="" disabled selected>Velg et alternativ</option>
+                <option value="Very easy">Veldig lett</option>
+                <option value="Easy">Lett</option>
+                <option value="Neutral">Nøytral</option>
+                <option value="Difficult">Vanskelig</option>
+                <option value="Very difficult">Veldig vanskelig</option>
+            </select>
+        </div>
 
-            <!-- New Question: Distraction -->
-            <div class="question-div">
-                <p>Fant du lydvarslene spesielt distraherende?</p>
-                <div class="options">
-                    <label class="option-item">
-                        <input type="radio" name="distraction" value="Yes" required> Ja
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="distraction" value="No"> Nei
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="distraction" value="Neutral"> Nøytral
-                    </label>
-                </div>
-            </div>
+        <!-- New Question: Distraction -->
+        <div class="question-div">
+            <p>Fant du lydvarslene spesielt distraherende?</p>
+            <select name="distraction" required>
+                <option value="" disabled selected>Velg et alternativ</option>
+                <option value="Yes">Ja</option>
+                <option value="No">Nei</option>
+                <option value="Neutral">Nøytral</option>
+            </select>
+        </div>
 
-            <button type="submit">Send inn svar</button>
-        </form>
-    </div>
+        <button type="submit">Send inn svar</button>
+    </form>
+</div>
 
     <!-- END SCREEN -->
     <div class="end-screen" style="display:none;">
