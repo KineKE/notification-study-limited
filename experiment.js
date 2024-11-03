@@ -99,6 +99,9 @@ document.getElementById("consent-button").addEventListener("click", function() {
     // Skjul velkomstskjermen og vis metadata-skjermen
     document.querySelector(".welcome-screen").style.display = "none";
     document.querySelector(".metadata-screen").style.display = "block";
+
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
 });
 
 // Håndtere innlevering av skjema for metadata
@@ -120,6 +123,9 @@ document.getElementById("participant-form").addEventListener("submit", function(
     document.querySelector(".metadata-screen").style.display = "none";
     document.querySelector(".experiment-screen").style.display = "block";
     loadTextContent();
+
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
 
     // Start the countdown timer (e.g., for 10 minutes)
     const readingDuration = 8 * 60; // 8 minutes in seconds
@@ -211,6 +217,9 @@ function startNotifications(participantData) {
 function showPostTestScreen() {
     document.querySelector(".experiment-screen").style.display = "none";
     document.querySelector(".post-test-screen").style.display = "block";
+
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
 }
 
 // Event listener for submitting the question form
@@ -236,6 +245,9 @@ function endExperiment(participantData) {
     document.querySelector(".post-test-screen").style.display = "none";
     document.querySelector(".end-screen").style.display = "block";
     document.getElementById("download-button").addEventListener("click", downloadData);
+
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
 }
 
 function downloadData() {
