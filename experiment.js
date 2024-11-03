@@ -173,7 +173,7 @@ function startNotifications(participantData) {
     notificationTypes.sort(() => Math.random() - 0.5);
 
     // Calculations
-    const totalDuration = 2 * 60 * 1000; // 10 minutes
+    const totalDuration = 8 * 60 * 1000; // 10 minutes
     const minInterval = 5 * 1000; // 5 seconds
     const maxInterval = 45 * 1000 // 45 seconds
 
