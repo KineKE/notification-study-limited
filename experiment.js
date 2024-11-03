@@ -46,6 +46,19 @@ function verifyCaptcha() {
     }
 }
 
+document.getElementById("email-button").addEventListener("click", function() {
+    const email = "kieng6560@oslomet.no"; // Replace with your email address
+    const subject = "Participant Data";
+    const body = encodeURIComponent(JSON.stringify(participantData, null, 2)); // Encode the data for the email
+
+    // Create the mailto link
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    // Open the mailto link
+    window.location.href = mailtoLink;
+});
+
+
 // Countdown timer logic
 function startCountdown(duration) {
     let timer = duration;
