@@ -84,11 +84,12 @@ document.getElementById("participant-form").addEventListener("submit", function(
     // Samle deltakerinfo og starte eksperimentet
     participantData.age = document.getElementById("age").value;
     participantData.gender = document.getElementById("gender").value;
+    participantData.enhet = document.getElementById("enhet").value;
     participantData.audioOutput = document.getElementById("audio-output").value;
-    participantData.inputDevice = document.getElementById("input-device").value;
+    participantData.inputDevice = document.getElementById("input").value;
     participantData.hearingImpairment = document.getElementById("hearing-impairment").value;
-    participantData.computerFamiliarity = document.getElementById("computer-familiarity").value;
-    participantData.previousStudy = document.getElementById("previous-study").value;
+    participantData.computerFamiliarity = document.getElementById("datavandt").value;
+    participantData.previousStudy = document.getElementById("tidligere-studie").value;
     participantData.responseTimes = [];
 
     // Skjul velkomstskjerm og vis test-skjerm
@@ -99,10 +100,9 @@ document.getElementById("participant-form").addEventListener("submit", function(
     setTimeout(() => {
         startNotifications(participantData);
     }, 500);
-
-
 })
 
+/*
 function startNotifications(participantData) {
     let notificationCount = 0;
     const maxNotifications = 2; // 1 with sound, 1 without sound for testing
@@ -156,10 +156,11 @@ function startNotifications(participantData) {
         }
     }
     // The first notification
-    setTimeout(showNotification, intervals[0]);
-}
+    setTimeout(showNotification, intervals[0])
 
-/*
+}
+    */
+
 function startNotifications(participantData) {
 
     let notificationCount = 0;
@@ -172,7 +173,7 @@ function startNotifications(participantData) {
     notificationTypes.sort(() => Math.random() - 0.5);
 
     // Calculations
-    const totalDuration = 10 * 60 * 1000; // 10 minutes
+    const totalDuration = 2 * 60 * 1000; // 10 minutes
     const minInterval = 5 * 1000; // 5 seconds
     const maxInterval = 45 * 1000 // 45 seconds
 
@@ -211,10 +212,19 @@ function startNotifications(participantData) {
                 const responseTime = Date.now() - notificationStart;
                 participantData.responseTimes.push({ withSound, responseTime });
             }, 50); // Delay by 50 milliseconds to sync better with the sound
+
+            if (notificationCount >= maxNotifications) {
+                showPostTestScreen();
+                return;
+
         } else {
             alert("Klikk OK for å lukke notifikasjonen.");
             const responseTime = Date.now() - notificationStart;
             participantData.responseTimes.push({ withSound, responseTime });
+
+            if (notificationCount >= maxNotifications) {
+                showPostTestScreen();
+                return;
         }
         // Schedule the next notification
         if (notificationCount < maxNotifications) {
@@ -224,7 +234,7 @@ function startNotifications(participantData) {
     // The first notification
     showNotification();
 }
- */
+
 
 
 
@@ -255,5 +265,23 @@ function endExperiment(participantData) {
     // Skjul testskjermen og vis avslutningsskjermen
     document.querySelector(".post-test-screen").style.display = "none";
     document.querySelector(".end-screen").style.display = "block";
+    document.getElementById("download-button").addEventListener("click", downloadData);
 }
+
+function downloadData() {
+    // Convert the participantData object to a JSON string
+    const dataStr = JSON.stringify(participantData, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary link element
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "participantData.json"; // File name
+    a.click(); // Trigger the download
+
+    // Clean up the URL object
+    URL.revokeObjectURL(url);
+}
+
 

@@ -86,64 +86,65 @@
             <div class="form-group">
                 <label for="gender">Hva er ditt kjønn?:</label>
                 <select id="gender" required>
-                    <option value="Mann">Mann</option>
-                    <option value="Kvinne">Kvinne</option>
-                    <option value="Ikke-binær">Ikke-binær</option>
-                    <option value="Foretrekker-å-ikke-svare">Foretrekker å ikke svare</option>
-                    <option value="Annet">Annet</option>
+                    <option value="mann">Mann</option>
+                    <option value="kvinne">Kvinne</option>
+                    <option value="ikke-binær">Ikke-binær</option>
+                    <option value="ikke-svare">Foretrekker å ikke svare</option>
+                    <option value="annet">Annet</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="device-type">Hva slags enhet bruker du akkurat nå?:</label>
-                <select id="device-type" required>
-                    <option value="Mobiltelefon">Mobiltelefon</option>
-                    <option value="Stasjonær-data">Stasjonær datamaskin</option>
-                    <option value="Bærbar-data">Bærbar datamaskin</option>
-                    <option value="Annet">Annet</option>
+                <label for="enhet">Hva slags enhet bruker du akkurat nå?:</label>
+                <select id="enhet" required>
+                    <option value="mobiltelefon">Mobiltelefon</option>
+                    <option value="stasjonær-data">Stasjonær datamaskin</option>
+                    <option value="bærbar-data">Bærbar datamaskin</option>
+                    <option value="annet">Annet</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="audio-output">Bruker du hodetelefoner eller høytalere?:</label>
                 <select id="audio-output" required>
-                    <option value="Hodetelefoner">Hodetelefoner</option>
-                    <option value="Høytalere">Høytaler</option>
-                    <option value="Annet">Annet</option>
+                    <option value="hodetelefoner">Hodetelefoner</option>
+                    <option value="høytalere">Høytaler</option>
+                    <option value="annet">Annet</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="input-device">Bruker du datamus eller touchpad?:</label>
-                <select id="input-device" required>
-                    <option value="Mus">Mus</option>
-                    <option value="Touchpad">Touchpad</option>
-                    <option value="Annet">Annet</option>
+                <label for="input">Bruker du datamus eller touchpad?:</label>
+                <select id="input" required>
+                    <option value="mus">Mus</option>
+                    <option value="trackpad">Trackpad (data)</option>
+                    <option value="touch">Touch (mobil/nettbrett)</option>
+                    <option value="annet">Annet</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="hearing-impairment">Har du noen kjente hørselshemminger som kan påvirke din respons på lydvarsler?:</label>
                 <select id="hearing-impairment" required>
-                    <option value="Nei">Nei</option>
-                    <option value="Ja">Ja</option>
-                    <option value="Foretrekker å ikke svare">Foretrekker å ikke svare</option>
+                    <option value="nei">Nei</option>
+                    <option value="ja">Ja</option>
+                    <option value="ikke-svare">Foretrekker å ikke svare</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="computer-familiarity">Hvor kjent er du med å bruke en datamaskin/mobiltelefon til daglige oppgaver?:</label>
-                <select id="computer-familiarity" required>
-                    <option value="Ikke-i-det-hele-tatt">Ikke i det hele tatt</option>
-                    <option value="Ikke-særlig">Ikke-særlig</option>
-                    <option value="Noe">Noe</option>
-                    <option value="Veldig">Veldig</option>
+                <label for="datavandt">Hvor kjent er du med å bruke en datamaskin/mobiltelefon til daglige oppgaver?:</label>
+                <select id="datavandt" required>
+                    <option value="ikke">Ikke i det hele tatt</option>
+                    <option value="noe">Noe</option>
+                    <option value="ganske">Ganske</option>
+                    <option value="veldig">Veldig</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="previous-study">Har du noen gang deltatt i en test som involverer å svare på varsler eller lydsignaler?:</label>
-                <select id="previous-study" required>
+                <label for="tidligere-studie">Har du noen gang deltatt i en test som involverer å svare på varsler eller lydsignaler?:</label>
+                <select id="tidligere-studie" required>
                     <option value="Nei">Nei</option>
                     <option value="Ja">Ja</option>
                 </select>
@@ -152,6 +153,7 @@
             <button type="submit">Start testen</button>
         </form>
     </div>
+
 
     <!-- Selve test-skjermen -->
     <div class="experiment-screen" style="display:none;">
@@ -280,30 +282,17 @@
     <!-- END SCREEN -->
     <div class="end-screen" style="display:none;">
         <div class="end-container">
-            <h1>Testen er over</h1>
-            <p>Takk for din deltakelse</p>
+            <div class="end-title-container">
+                <h1 class="end-title">Testen er over</h1>
+            </div>
+            <div class="end-subtext-container">
+                <p class="end-subtext">Takk for din deltakelse</p>
+            </div>
+            <div class="button-container">
+                <button id="download-button">Download Data</button>
+            </div>
         </div>
     </div>
-
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCgWB2z90FpgeyYizm6krku2soCAlAgR1w",
-          authDomain: "notification-study-limited.firebaseapp.com",
-          projectId: "notification-study-limited",
-          storageBucket: "notification-study-limited.firebasestorage.app",
-          messagingSenderId: "503359665016",
-          appId: "1:503359665016:web:7cc1c48ec72a9278964e8d"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-      </script>
        <script src="experiment.js"></script>
 </body>
 </html>
