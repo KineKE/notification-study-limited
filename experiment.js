@@ -52,10 +52,17 @@ function startCountdown(duration) {
     const countdownElement = document.getElementById("countdown");
 
     const interval = setInterval(() => {
+        // Calculate minutes and seconds
         const minutes = Math.floor(timer / 60);
         const seconds = timer % 60;
-        countdownElement.textContent = `${minutes}m ${seconds}s`;
-    }, 1000);
+
+        // Update the countdown text
+        countdownElement.textContent = `${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
+
+        // Decrement the timer
+        timer--;
+
+    }, 1000); // Update every second
 }
 
 // Funksjon for å laste tekstinnhold
@@ -117,65 +124,6 @@ document.getElementById("participant-form").addEventListener("submit", function(
         startNotifications(participantData);
     }, 500);
 })
-
-/*
-function startNotifications(participantData) {
-    let notificationCount = 0;
-    const maxNotifications = 2; // 1 with sound, 1 without sound for testing
-    const notificationsWithSound = [true]; // One notification with sound
-    const notificationsWithoutSound = [false]; // One notification without sound
-    const notificationTypes = [...notificationsWithSound, ...notificationsWithoutSound];
-
-    // Shuffle the notificationTypes array to randomize the order
-    notificationTypes.sort(() => Math.random() - 0.5);
-
-    // Set intervals to ensure the test version doesn't take long
-    const intervals = [5000, 5000]; // Both notifications will be spaced 5 seconds apart
-
-    function showNotification() {
-
-        const withSound = notificationTypes[notificationCount];
-        notificationCount++;
-        const notificationStart = Date.now();
-
-        if (withSound) {
-            const audio = new Audio("assets/notification-alert.wav");
-            audio.preload = "auto";
-            audio.currentTime = 0;
-            audio.play();
-
-            // Add a tiny delay before showing the alert, so the sound and alert are perceived together
-            setTimeout(() => {
-                alert("Klikk OK for å lukke notifikasjonen.");
-                const responseTime = Date.now() - notificationStart;
-                participantData.responseTimes.push({ withSound, responseTime });
-            }, 50); // Delay by 50 milliseconds to sync better with the sound
-
-            if (notificationCount >= maxNotifications) {
-                showPostTestScreen();
-                return;
-            }
-
-        } else {
-            alert("Klikk OK for å lukke notifikasjonen.");
-            const responseTime = Date.now() - notificationStart;
-            participantData.responseTimes.push({ withSound, responseTime });
-
-            if (notificationCount >= maxNotifications) {
-                showPostTestScreen();
-                return;
-            }
-        }
-        // Schedule the next notification
-        if (notificationCount < maxNotifications) {
-            setTimeout(showNotification, intervals[notificationCount - 1]);
-        }
-    }
-    // The first notification
-    setTimeout(showNotification, intervals[0])
-
-}
-    */
 
 function startNotifications(participantData) {
 
