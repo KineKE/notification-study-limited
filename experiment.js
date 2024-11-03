@@ -226,12 +226,12 @@ function showPostTestScreen() {
 document.getElementById("question-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    participantData.question1 = document.querySelector('input[name="question1"]:checked').value;
-    participantData.question2 = document.querySelector('input[name="question2"]:checked').value;
-    participantData.question3 = document.querySelector('input[name="question3"]:checked').value;
-    participantData.engagement = document.querySelector('input[name="engagement"]:checked').value;
-    participantData.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
-    participantData.distraction = document.querySelector('input[name="distraction"]:checked').value;
+    participantData.question1 = document.querySelector('select[name="question1"]:checked').value;
+    participantData.question2 = document.querySelector('select[name="question2"]:checked').value;
+    participantData.question3 = document.querySelector('select[name="question3"]:checked').value;
+    participantData.engagement = document.querySelector('select[name="engagement"]:checked').value;
+    participantData.difficulty = document.querySelector('select[name="difficulty"]:checked').value;
+    participantData.distraction = document.querySelector('select[name="distraction"]:checked').value;
 
     endExperiment(participantData);
 });
