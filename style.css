@@ -608,3 +608,10 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #004c99; /* Slightly darker blue on hover */
 }
+
+.countdown-timer {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #333;
+}
