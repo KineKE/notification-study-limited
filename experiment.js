@@ -56,7 +56,7 @@ document.getElementById("email-button").addEventListener("click", function() {
 
     // Open the mailto link
     window.location.href = mailtoLink;
-});
+})
 
 
 // Countdown timer logic
