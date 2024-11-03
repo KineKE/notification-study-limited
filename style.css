@@ -623,3 +623,16 @@ button[type="submit"]:hover {
     border-radius: 10px;     /* Rounded corners for a softer look */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
+
+.question-div a {
+    color: #007bff; /* Accent color for the link */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make the link bold */
+}
+
+.question-div label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: #555; /* Softer text color for the label */
+}
