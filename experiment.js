@@ -189,7 +189,6 @@ function startNotifications(participantData) {
     }
     intervals.push(remainingTime);
 
-
     function showNotification() {
         if (notificationCount >= maxNotifications) {
             showPostTestScreen();
