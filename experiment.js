@@ -3,7 +3,6 @@ let captchaPassed = false;
 let attempts = 0;
 const maxAttempts = 3;
 let participantData = {}; // Declare globally
-let responseTimes = [];
 
 // Funksjon for å spille av testlyden
 function playTestSound() {
@@ -90,6 +89,7 @@ document.getElementById("participant-form").addEventListener("submit", function(
     participantData.hearingImpairment = document.getElementById("hearing-impairment").value;
     participantData.computerFamiliarity = document.getElementById("computer-familiarity").value;
     participantData.previousStudy = document.getElementById("previous-study").value;
+    participantData.responseTimes = [];
 
     // Skjul velkomstskjerm og vis test-skjerm
     document.querySelector(".metadata-screen").style.display = "none";
@@ -132,7 +132,7 @@ function startNotifications(participantData) {
             setTimeout(() => {
                 alert("Klikk OK for å lukke notifikasjonen.");
                 const responseTime = Date.now() - notificationStart;
-                responseTimes.push({ withSound, responseTime });
+                participantData.responseTimes.push({ withSound, responseTime });
             }, 50); // Delay by 50 milliseconds to sync better with the sound
 
             if (notificationCount >= maxNotifications) {
@@ -257,19 +257,3 @@ function endExperiment(participantData) {
     document.querySelector(".end-screen").style.display = "block";
 }
 
-
-// Replace 'YOUR_SCRIPT_URL' with your Web App URL
-fetch('https://script.google.com/macros/s/AKfycbyS3r2LpM2nXLHY4SfNG9PvMzXIC6hrUiSjglmmGRspeGRxs0SwOStO4iB7am_Iv9RMag/exec', {
-    method: 'POST',
-    body: JSON.stringify(participantData),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
-.then(response => response.text())
-.then(data => {
-    console.log('Success:', data);
-})
-.catch((error) => {
-    console.error('Error:', error);
-});
