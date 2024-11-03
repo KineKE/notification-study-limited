@@ -89,7 +89,6 @@ document.getElementById("participant-form").addEventListener("submit", function(
     participantData.hearingImpairment = document.getElementById("hearing-impairment").value;
     participantData.computerFamiliarity = document.getElementById("computer-familiarity").value;
     participantData.previousStudy = document.getElementById("previous-study").value;
-    participantData.responseTimes = [];
 
     // Skjul velkomstskjerm og vis test-skjerm
     document.querySelector(".metadata-screen").style.display = "none";
@@ -255,7 +254,21 @@ function endExperiment(participantData) {
     // Skjul testskjermen og vis avslutningsskjermen
     document.querySelector(".post-test-screen").style.display = "none";
     document.querySelector(".end-screen").style.display = "block";
-
-    localStorage.setItem("participant_data", JSON.stringify(participantData));
 }
 
+
+// Replace 'YOUR_SCRIPT_URL' with your Web App URL
+fetch('https://script.google.com/macros/s/AKfycbyS3r2LpM2nXLHY4SfNG9PvMzXIC6hrUiSjglmmGRspeGRxs0SwOStO4iB7am_Iv9RMag/exec', {
+    method: 'POST',
+    body: JSON.stringify(participantData),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => response.text())
+.then(data => {
+    console.log('Success:', data);
+})
+.catch((error) => {
+    console.error('Error:', error);
+});
